@@ -7,7 +7,7 @@ namespace EmailClient.Helpers
 {
     public class RazorParser
     {
-        private Assembly _assembly;
+        private readonly Assembly _assembly;
         public RazorParser(Assembly assembly)
         {
             this._assembly = assembly;
@@ -36,8 +36,8 @@ namespace EmailClient.Helpers
 
         string GenerateFileAssemblyPath(string template, Assembly assembly)
         {
-            string assemblyName = assembly.GetName().Name;
-            return string.Format("{0}.{1}.{2}", assemblyName, template, "cshtml");
+            var assemblyName = assembly.GetName().Name;
+            return $"{assemblyName}.{template}.cshtml";
         }
     }
 }

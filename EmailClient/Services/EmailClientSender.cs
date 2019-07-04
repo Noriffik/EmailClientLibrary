@@ -41,16 +41,14 @@ namespace EmailClient.Services
             var htmlContent = message;
 
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
-            Response response;
             try
             {
-                response = await client.SendEmailAsync(msg);
+                await client.SendEmailAsync(msg);
             }
             catch (HttpRequestException)
             {
                 Console.WriteLine("{0}", "SendEmailAsync Failed");
             }
         }
-
     }
 }
